@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
     }
 
     public void onClickMenuOther(MenuItem item) {
-        Toast toast = Toast.makeText(this, "Other note", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(this, "Other note text changed", Toast.LENGTH_LONG);
         toast.show();
     }
 
