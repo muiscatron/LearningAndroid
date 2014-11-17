@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ActivityLifecycle</string>
+    <string name="hello_activity2">This is Activity 2</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_activity2">Activity2</string>
+    <string name="title_activity_activity3">Activity3</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="hello_mainactivity">Hello Main Activity</string>
+    <string name="menu_title_show_activity_2">Show Activity 2</string>
+
+</resources>

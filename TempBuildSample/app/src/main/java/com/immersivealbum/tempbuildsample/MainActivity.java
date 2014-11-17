@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -24,13 +25,40 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        boolean handled = true;
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (id) {
+            case R.id.action_other:
+                onClickMenuOther(item);
+                handled = true;
+                break;
+            case R.id.action_exit:
+                onClickMenuExit(item);
+                handled = true;
+                break;
+            case R.id.action_settings:
+                handled = true;
+                break;
+            default:
+                handled = super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
+        return handled;
     }
+
+    public void onClickMenuOther(MenuItem item) {
+        Toast toast = Toast.makeText(this, "Other note", Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void onClickMenuExit(MenuItem item) {
+        this.finish();
+    }
+
+
 }
