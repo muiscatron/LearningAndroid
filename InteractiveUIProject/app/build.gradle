@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.immersivealbum.interactiveuiproject"
+        applicationId "com.immersivealbum.interactiveuiproject.agent"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
@@ -16,7 +16,55 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix ' (dbg)'
+        }
     }
+
+    flavorDimensions('appType', 'environment')
+
+    productFlavors {
+        Agent {
+            dimension 'appType'
+            buildConfigField "String", "Agent", "http://branchOne.com/android"
+        }
+
+        Monitor {
+            dimension 'appType'
+        }
+
+        Local {
+            dimension 'environment'
+        }
+
+        Test {
+            dimension 'environment'
+
+        }
+
+
+    }
+
+    applicationVariants.all { variant ->
+        def mergedFlavor = variant.mergedFlavor
+        switch (variant.flavorName) {
+            case "AgentLocal":
+                mergedFlavor.setApplicationId("com.immersivealbum.interactiveuiproject.agent.local")
+                break
+            case "MonitorLocal":
+                mergedFlavor.setApplicationId("com.immersivealbum.interactiveuiproject.monitor.local")
+                break
+            case "AgentTest":
+                mergedFlavor.setApplicationId("com.immersivealbum.interactiveuiproject.agent.test")
+                break
+            case "MonitorTest":
+                mergedFlavor.setApplicationId("com.immersivealbum.interactiveuiproject.monitor.test")
+                break
+        }
+    }
+
 }
 
 dependencies {
